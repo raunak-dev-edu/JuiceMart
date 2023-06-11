@@ -14,7 +14,7 @@ if(process.env.NODE_ENV !== 'PRODUCTION') {
 
 // middleware
 const corsOptions = {
-    origin: "https://juicemart-b.onrender.com", // frontend URI (ReactJS)
+    origin: "https://juicemart.onrender.com", // frontend URI (ReactJS)
 }
 app.use(express.json());
 app.use(cors(corsOptions));
