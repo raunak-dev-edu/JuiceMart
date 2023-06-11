@@ -59,7 +59,7 @@ const Payment = () => {
         },
       };
       const { data } = await axios.post(
-        "/api/v1/payment/process",
+        "https://juicemart-b.onrender.com/api/v1/payment/process",
         paymentData,
         config
       );

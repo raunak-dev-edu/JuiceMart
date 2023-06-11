@@ -47,7 +47,7 @@ function App() {
   const [stripeApiKey, setStripeApiKey] = useState("");
 
   async function getStripeApiKey() {
-    const { data } = await axios.get("/api/v1/stripeapikey");
+    const { data } = await axios.get("https://juicemart-b.onrender.com/api/v1/stripeapikey");
 
     setStripeApiKey(data.stripeApiKey);
   }
@@ -78,11 +78,11 @@ function App() {
         <Route exact path="/process/payment" element = {<ProtectedRoute component={Payment} />} />
       </Elements>
     )} */}
-   
+
 
       <Routes>
-        { stripeApiKey && (
-      <Route exact path="/process/payment" element={<Elements stripe={loadStripe(stripeApiKey)}><Payment/></Elements>} />
+        {stripeApiKey && (
+          <Route exact path="/process/payment" element={<Elements stripe={loadStripe(stripeApiKey)}><Payment /></Elements>} />
         )}
         <Route exact path="/" element={<Home />} />
         <Route exact path="/product/:id" element={<ProductDetails />} />
@@ -124,70 +124,70 @@ function App() {
 
         <Route exact path="/cart" element={<Cart />} />
 
-      <Route element=
-      {<ProtectedRoute 
-      isAuthenticated={isAuthenticated}
-      isAdmin ={true} />}>
+        <Route element=
+          {<ProtectedRoute
+            isAuthenticated={isAuthenticated}
+            isAdmin={true} />}>
 
-        <Route
+          <Route
 
-          exact
-          path="/admin/dashboard"
-          element={<Dashboard />}
-        />
-        <Route
-          exact
-          path="/admin/products"
+            exact
+            path="/admin/dashboard"
+            element={<Dashboard />}
+          />
+          <Route
+            exact
+            path="/admin/products"
 
-          element={<ProductList />}
-        />
-        <Route
-          exact
-          path="/admin/product"
+            element={<ProductList />}
+          />
+          <Route
+            exact
+            path="/admin/product"
 
-          element={<NewProduct />}
-        />
+            element={<NewProduct />}
+          />
 
-        <Route
-          exact
-          path="/admin/product/:id"
+          <Route
+            exact
+            path="/admin/product/:id"
 
-          element={<UpdateProduct />}
-        />
-        <Route
-          exact
-          path="/admin/orders"
+            element={<UpdateProduct />}
+          />
+          <Route
+            exact
+            path="/admin/orders"
 
-          element={<OrderList />}
-        />
+            element={<OrderList />}
+          />
 
-        <Route
-          exact
-          path="/admin/order/:id"
+          <Route
+            exact
+            path="/admin/order/:id"
 
-          element={<ProcessOrder />}
-        />
-        <Route
-          exact
-          path="/admin/users"
+            element={<ProcessOrder />}
+          />
+          <Route
+            exact
+            path="/admin/users"
 
-          element={<UsersList />}
-        />
+            element={<UsersList />}
+          />
 
-        <Route
-          exact
-          path="/admin/user/:id"
+          <Route
+            exact
+            path="/admin/user/:id"
 
-          element={<UpdateUser />}
-        />
+            element={<UpdateUser />}
+          />
 
-        <Route
-          exact
-          path="/admin/reviews"
+          <Route
+            exact
+            path="/admin/reviews"
 
-          element={<ProductReviews />}
-        />
-</Route>
+            element={<ProductReviews />}
+          />
+        </Route>
         <Route
           element={
             window.location.pathname === "/process/payment" ? null : NotFound
