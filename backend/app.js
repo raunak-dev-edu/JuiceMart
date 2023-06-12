@@ -15,6 +15,8 @@ if(process.env.NODE_ENV !== 'PRODUCTION') {
 // middleware
 const corsOptions = {
     origin: ["http://localhost:3000","https://juicemart.onrender.com"], // frontend URI (ReactJS)
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true, 
 }
 app.use(express.json());
 app.use(cors(corsOptions));
