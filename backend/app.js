@@ -14,7 +14,7 @@ if(process.env.NODE_ENV !== 'PRODUCTION') {
 
 // middleware
 const corsOptions = {
-    origin: "https://juicemart.onrender.com", // frontend URI (ReactJS)
+    origin: ["http://localhost:3000","https://juicemart.onrender.com"], // frontend URI (ReactJS)
 }
 app.use(express.json());
 app.use(cors(corsOptions));
@@ -33,11 +33,11 @@ app.use('/api/v1', user);
 app.use('/api/v1', order);
 app.use('/api/v1', payment);
 
-app.use(express.static(path.join(__dirname, '../frontend/build')));
+// app.use(express.static(path.join(__dirname, '../frontend/build')));
 
-app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../frontend/build/index.html'));
-});
+// app.get('*', (req, res) => {
+//     res.sendFile(path.resolve(__dirname, '../frontend/build/index.html'));
+// });
 
 // Middleware to handle errors
 app.use(errorMiddleware);
