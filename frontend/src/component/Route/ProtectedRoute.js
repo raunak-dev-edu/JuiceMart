@@ -15,26 +15,5 @@ if(!loading ){
 
   return <Outlet/>;
 }};
-//   return (
-//     <Fragment>
-//       {loading === false && (
-//         <Route
-//           {...rest}
-//           render={(props) => {
-//             if (isAuthenticated === false) {
-//               return <Navigate to="/login" />;
-//             }
-
-//             if (isAdmin === true && user.role !== "admin") {
-//               return <Navigate to="/login" />;
-//             }
-
-//             return children;
-//           }}
-//         />
-//       )}
-//     </Fragment>
-//   );
-// };
 
 export default ProtectedRoute;
