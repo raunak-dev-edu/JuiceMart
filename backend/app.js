@@ -43,6 +43,12 @@ app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, '../frontend/build/index.html'));
 });
 }
+
+app.get('/', (req, res) => {
+    res.setHeader("Access-Control-Allow-Credentials", "true");
+    res.send('API is running');
+
+});
 // Middleware to handle errors
 app.use(errorMiddleware);
 
