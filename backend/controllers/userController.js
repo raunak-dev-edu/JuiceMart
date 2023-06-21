@@ -6,7 +6,7 @@ const sendEmail = require("../utils/sendEmail.js");
 const crypto = require("crypto");
 const cloudinary = require("cloudinary");
 
-// Register a user => https://juicemart-b.onrender.com/api/v1/register
+// Register a user => /api/v1/register
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
     const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
         folder: 'avatars',
@@ -29,7 +29,7 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
     sendToken(user, 201, res);
 });
 
-// Login User => https://juicemart-b.onrender.com/api/v1/login
+// Login User => /api/v1/login
 exports.loginUser = catchAsyncErrors(async (req, res, next) => {
     const { email, password } = req.body;
 
@@ -55,7 +55,7 @@ exports.loginUser = catchAsyncErrors(async (req, res, next) => {
     sendToken(user, 200, res);
 });
 
-// Logout user => https://juicemart-b.onrender.com/api/v1/logout
+// Logout user => /api/v1/logout
 exports.logout = catchAsyncErrors(async (req, res, next) => {
     res.cookie('token', null, {
         expires: new Date(Date.now()),
@@ -68,7 +68,7 @@ exports.logout = catchAsyncErrors(async (req, res, next) => {
     })
 });
 
-// Forgot Password => https://juicemart-b.onrender.com/api/v1/password/forgot
+// Forgot Password => /api/v1/password/forgot
 exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
     const user = await User.findOne({ email: req.body.email });
 
@@ -107,7 +107,7 @@ exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
     }
 });
 
-// Reset Password => https://juicemart-b.onrender.com/api/v1/password/reset/:token
+// Reset Password => /api/v1/password/reset/:token
 exports.resetPassword = catchAsyncErrors(async (req, res, next) => {
     // Hash URL token
     const resetPasswordToken = crypto.createHash('sha256').update(req.params.token).digest('hex');
@@ -136,7 +136,7 @@ exports.resetPassword = catchAsyncErrors(async (req, res, next) => {
     sendToken(user, 200, res);
 });
 
-// Get User Detail => https://juicemart-b.onrender.com/api/v1/me
+// Get User Detail => /api/v1/me
 exports.getUserDetails = catchAsyncErrors(async (req, res, next) => {
     const user = await User.findById(req.user.id);
 
@@ -146,7 +146,7 @@ exports.getUserDetails = catchAsyncErrors(async (req, res, next) => {
     })
 });
 
-// Update / Change Password => https://juicemart-b.onrender.com/api/v1/password/update
+// Update / Change Password => /api/v1/password/update
 exports.updatePassword = catchAsyncErrors(async (req, res, next) => {
     const user = await User.findById(req.user.id).select('+password');
 
@@ -166,7 +166,7 @@ exports.updatePassword = catchAsyncErrors(async (req, res, next) => {
     sendToken(user, 200, res);
 });
 
-// Update User Profile => https://juicemart-b.onrender.com/api/v1/me/update
+// Update User Profile => /api/v1/me/update
 exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
     const newUserData = {
         name: req.body.name,
@@ -205,7 +205,7 @@ exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
     })
 });
 
-// Get all users(admin) => https://juicemart-b.onrender.com/api/v1/admin/users
+// Get all users(admin) => /api/v1/admin/users
 exports.allUsers = catchAsyncErrors(async (req, res, next) => {
     const users = await User.find();
 
@@ -215,7 +215,7 @@ exports.allUsers = catchAsyncErrors(async (req, res, next) => {
     })
 });
 
-// Get single user(admin) => https://juicemart-b.onrender.com/api/v1/admin/user/:id
+// Get single user(admin) => /api/v1/admin/user/:id
 exports.getSingleUser = catchAsyncErrors(async (req, res, next) => {
     const user = await User.findById(req.params.id);
 
@@ -229,7 +229,7 @@ exports.getSingleUser = catchAsyncErrors(async (req, res, next) => {
     })
 });
 
-// update user role(admin) => https://juicemart-b.onrender.com/api/v1/admin/user/:id
+// update user role(admin) => /api/v1/admin/user/:id
 exports.updateUserRole = catchAsyncErrors(async (req, res, next) => {
     const newUserData = {
         name: req.body.name,
@@ -256,7 +256,7 @@ exports.updateUserRole = catchAsyncErrors(async (req, res, next) => {
     })
 });
 
-// Delete user(admin) => https://juicemart-b.onrender.com/api/v1/admin/user/:id
+// Delete user(admin) => /api/v1/admin/user/:id
 exports.deleteUser = catchAsyncErrors(async (req, res, next) => {
     const user = await User.findById(req.params.id);
 

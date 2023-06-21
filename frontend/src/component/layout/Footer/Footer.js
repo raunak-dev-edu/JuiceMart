@@ -1,6 +1,4 @@
 import React from 'react'
-import playstore from '../../../images/playstore.png'
-import appstore from '../../../images/Appstore.png'
 import './Footer.css'
 
 const Footer = () => {

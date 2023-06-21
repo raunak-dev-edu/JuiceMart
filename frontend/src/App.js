@@ -23,10 +23,10 @@ import ResetPassword from "./component/User/ResetPassword";
 import Cart from "./component/Cart/Cart";
 import Shipping from "./component/Cart/Shipping";
 import ConfirmOrder from "./component/Cart/ConfirmOrder";
-import axios from "axios";
-import Payment from "./component/Cart/Payment";
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
+// import axios from "axios";
+// import Payment from "./component/Cart/Payment";
+// import { Elements } from "@stripe/react-stripe-js";
+// import { loadStripe } from "@stripe/stripe-js";
 import OrderSuccess from "./component/Cart/OrderSuccess";
 import MyOrders from "./component/Order/MyOrders";
 import OrderDetails from "./component/Order/OrderDetails";
@@ -44,13 +44,13 @@ import NotFound from "./component/layout/Not Found/NotFound";
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
 
-  const [stripeApiKey, setStripeApiKey] = useState("");
+  // const [stripeApiKey, setStripeApiKey] = useState("");
 
-  async function getStripeApiKey() {
-    const { data } = await axios.get("https://juicemart-b.onrender.com/api/v1/stripeapikey");
+  // async function getStripeApiKey() {
+  //   const { data } = await axios.get("/api/v1/stripeapikey");
 
-    setStripeApiKey(data.stripeApiKey);
-  }
+  //   setStripeApiKey(data.stripeApiKey);
+  // }
 
   useEffect(() => {
     WebFont.load({
@@ -61,7 +61,7 @@ function App() {
 
     store.dispatch(loadUser());
 
-    getStripeApiKey();
+    // getStripeApiKey();
   }, []);
 
   window.addEventListener("contextmenu", (e) => e.preventDefault());
@@ -81,9 +81,7 @@ function App() {
 
 
       <Routes>
-        {stripeApiKey && (
-          <Route exact path="/process/payment" element={<Elements stripe={loadStripe(stripeApiKey)}><Payment /></Elements>} />
-        )}
+        
         <Route exact path="/" element={<Home />} />
         <Route exact path="/product/:id" element={<ProductDetails />} />
         <Route exact path="/products" element={<Products />} />
@@ -97,6 +95,9 @@ function App() {
         </ProtectedRoute>} /> */}
 
         <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} />}>
+          {/* {stripeApiKey && (
+          <Route exact path="/process/payment" element={<Elements stripe={loadStripe(stripeApiKey)}><Payment /></Elements>} />
+        )} */}
           <Route path="/account" element={<Profile />} />
           <Route exact path="/shipping" element={<Shipping />} />
 
