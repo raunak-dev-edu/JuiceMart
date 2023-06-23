@@ -13,14 +13,14 @@ if (process.env.NODE_ENV !== 'PRODUCTION') {
 }
 
 // middleware
-// const corsOptions = {
-//     origin: ["http://localhost:3000", "https://juicemart.onrender.com"], // frontend URI (ReactJS)
-//     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-//     credentials: true,
-//     allowedHeaders: 'Content-Type,Authorization'
-// }
+const corsOptions = {
+    origin: ["http://localhost:3000", "https://juicemart.onrender.com"], // frontend URI (ReactJS)
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+    allowedHeaders: 'Content-Type,Authorization'
+}
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(fileUpload());
