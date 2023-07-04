@@ -9,9 +9,9 @@ if(!loading ){
     return <Navigate to="/login" />;
   }
 
-  // if (isAdmin === true && user.role !== "admin") {
-  //   return <Navigate to="/login" />;
-  // }
+  if (isAdmin === true && user.role !== "admin") {
+    return <Navigate to="/login" />;
+  }
 
   return <Outlet/>;
 }};
