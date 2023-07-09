@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import {Provider} from 'react-redux';
 import store from './store';
+import {diableReactDevTools} from '@fvilers/disable-react-devtools'
 
 import { positions, transitions, Provider as AlertProvider} from 'react-alert';
 import AlertTemplate from 'react-alert-template-basic';
@@ -11,6 +12,10 @@ const options = {
   timeout: 5000,
   position: positions.BOTTOM_CENTER,
   transition: transitions.SCALE
+}
+
+if(process.env.NODE_ENV === 'production'){
+  diableReactDevTools();
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

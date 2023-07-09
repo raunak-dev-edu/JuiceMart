@@ -65,6 +65,7 @@ const store = configureStore({
     middleware: [thunk],
     composeWithDevTools,
     preloadedState: initialState,
+    devTools: false,
 });
 
 
