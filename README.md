@@ -4,6 +4,9 @@
 
 JuiceMart is an online store designed for the convenience of ordering refreshing juices and soft drinks from the comfort of your home. This platform offers a seamless experience for users to explore a variety of products, manage their accounts, and enjoy the ease of online shopping for their favorite beverages.
 
+![image](https://github.com/raunak-dev-edu/JuiceMart/assets/95216822/0f4af0fe-b680-445b-8020-22cb94da30d2)
+
+ 
 ## Features
 
 ### User Account Management
