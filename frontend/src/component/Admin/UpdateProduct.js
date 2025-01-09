@@ -41,13 +41,12 @@ const UpdateProduct = () => {
   const [imagesPreview, setImagesPreview] = useState([]);
 
   const categories = [
-    "Laptop",
-    "Footwear",
-    "Bottom",
-    "Tops",
-    "Attire",
-    "Camera",
-    "SmartPhones",
+    "Fruit Juices",
+    "Vegetable Juices",
+    "Citrus Juices",
+    "Berry Juices",
+    "Specialized Juices",
+    "Cold Drinks",
   ];
 
   const productId = id;
